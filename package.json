@@ -7,13 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "vite preview --port $PORT"
+    "start": "node -e \"const express = require('express'); const path = require('path'); const app = express(); app.use(express.static(path.join(__dirname, 'dist'))); app.get('*', (req, res) => { res.sendFile(path.join(__dirname, 'dist', 'index.html')); }); const PORT = process.env.PORT || 3000; app.listen(PORT, () => { console.log('Server is running on port ' + PORT); });\""
   },
   "devDependencies": {
     "terser": "^5.30.3",
     "vite": "^5.2.0"
   },
   "dependencies": {
+    "express": "^4.19.2",
     "kaboom": "^3000.1.17"
   }
 }
